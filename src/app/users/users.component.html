@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-md-12 bg-light">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3>UserList</h3>
+            </div>
+            <div class="cool-md-6">
+                <button class="btn btn-success" (click)="addUser()">Add User</button>
+            </div>
+        </div>
+        <div class="row" *ngIf="!isCreateMode">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover table-sm table-secondary">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Name</th>
+                            <th>UserName</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of userList;let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{user.name}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phone}}</td>
+                            <td>
+                                <button class="btn btn-success btn-sm" (click)="edit(user.id)">Edit</button>
+                                <button class="btn btn-danger btn-sm" (click)="delete(user.id)">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row" *ngIf="isCreateMode">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Name</label>
+                                <input type="text"  [(ngModel)] ="user.name" placeholder="Name" class="form-control">
+                            </div>
+                            <div class="col-md-5">
+                                <label>User Name</label>
+                                <input type="text"  [(ngModel)] ="user.username" placeholder="UserName" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label>Email</label>
+                                <input type="email"  [(ngModel)] ="user.email" placeholder="Email" class="form-control">
+                            </div>
+                            <div class="col-md-5">
+                                <label>Phone</label>
+                                <input type="text"  [(ngModel)] ="user.phone" placeholder="Phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button class="btn btn-secondary mt-4" (click)="cancel()">Cancel</button>
+                            </div>
+                            <div class="col-md-5">
+                               <button class="btn btn-success mt-4" (click)="saveUser()">Save User</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
